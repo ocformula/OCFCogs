@@ -499,7 +499,7 @@ class AutoRoom(
         """Delete AutoRoom if empty."""
         if (
             not voice_channel.members
-            and voice_channel.guild.me.permissions_in(voice_channel).manage_channels
+            and voice_channel.permissions_for(voice_channel.guild.me).manage_channels
         ):
             try:
                 await voice_channel.delete(reason="AutoRoom: Channel empty.")
