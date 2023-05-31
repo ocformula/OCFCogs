@@ -13,10 +13,10 @@ class TeamShuffle(commands.Cog):
     async def _teamshuffle(self, ctx, *args):
         users = []
         for arg in args:
-            users.append(ctx.guild.get_member(arg))
+            users.append(arg)
 
         if len(users) % 2 == 1:
-            users.append(ctx.guild.get_member(None))
+            users.append(None)
 
         random.shuffle(users)
 
