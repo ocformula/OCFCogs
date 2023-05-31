@@ -19,12 +19,12 @@ class TeamShuffle(commands.Cog):
             await ctx.send("유저 목록을 입력해주세요.")
             return
             
-        elif len(users) % 2 == 1:
+        if len(users) % 2 == 1:
             users.append(None)
 
-            random.shuffle(users)
+        random.shuffle(users)
 
-            teams = [users[i::2] for i in range(2)]
+        teams = [users[i::2] for i in range(2)]
 
-            await ctx.send("1팀: {}".format(" ".join([str(user) for user in teams[0]])))
-            await ctx.send("2팀: {}".format(" ".join([str(user) for user in teams[1]])))
+        await ctx.send("1팀: {}".format(" ".join([str(user) for user in teams[0]])))
+        await ctx.send("2팀: {}".format(" ".join([str(user) for user in teams[1]])))
