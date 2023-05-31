@@ -10,7 +10,7 @@ class TeamShuffle(commands.Cog):
         self.bot = bot
 
     @commands.command(name="teamshuffle")
-    async def _teamshuffle(self, ctx, *args):
+    async def _teamshuffle(self, ctx: commands.Context, *args):
         users = []
         for arg in args:
             users.append(arg)
