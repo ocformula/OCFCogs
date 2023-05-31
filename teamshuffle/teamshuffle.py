@@ -26,5 +26,4 @@ class TeamShuffle(commands.Cog):
 
         teams = [users[i::2] for i in range(2)]
 
-        await ctx.send("1팀: {}".format(" ".join([str(user) for user in teams[0]])))
-        await ctx.send("2팀: {}".format(" ".join([str(user) for user in teams[1]])))
+        await ctx.send("1팀: {}".format(" ".join([str(user) for user in teams[0]])) + "\n" + "2팀: {}".format(" ".join([str(user) for user in teams[1]])))
