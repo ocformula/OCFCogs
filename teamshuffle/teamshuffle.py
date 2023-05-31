@@ -20,7 +20,7 @@ class TeamShuffle(commands.Cog):
             return
             
         if len(users) % 2 == 1:
-            users.append(None)
+            users.append()
 
         random.shuffle(users)
 
