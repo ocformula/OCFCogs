@@ -17,6 +17,7 @@ class TeamShuffle(commands.Cog):
 
         if len(users) == 0:
             await ctx.send("유저 목록을 입력해주세요.")
+            return
             
         elif len(users) % 2 == 1:
             users.append(None)
