@@ -4,7 +4,7 @@ from redbot.core import commands
 
 
 class TeamShuffle(commands.Cog):
-    """"""
+    """Shuffles users into two teams."""
 
     def __init__(self, bot):
         self.bot = bot
