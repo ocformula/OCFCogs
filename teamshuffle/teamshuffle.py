@@ -9,7 +9,7 @@ class TeamShuffle(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="teamshuffle", required=True)
+    @commands.command(name="teamshuffle")
     async def _teamshuffle(self, ctx, *args):
         users = []
         for arg in args:
