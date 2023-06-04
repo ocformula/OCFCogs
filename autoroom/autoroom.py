@@ -497,7 +497,8 @@ class AutoRoom(
                         await new_text_channel.send(hint)
                 except RuntimeError:
                     pass  # User manually screwed with the template
-            if not self.config.channel(new_voice_channel):
+            new_voice_channel = self.bot.get_channel(new_voice_channel.id)
+            if not new_voice_channel:
                 if (
                     new_text_channel
                     and new_text_channel.permissions_for(
