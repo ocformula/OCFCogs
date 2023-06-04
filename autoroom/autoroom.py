@@ -451,7 +451,6 @@ class AutoRoom(
         except discord.errors.HTTPException:
             await self._process_autoroom_delete(new_voice_channel)
             await self.config.channel(new_voice_channel).clear()
-            return
 
         # Create optional text channel
         if autoroom_source_config["text_channel"]:
@@ -498,6 +497,16 @@ class AutoRoom(
                         await new_text_channel.send(hint)
                 except RuntimeError:
                     pass  # User manually screwed with the template
+            if not self.bot.get_channel(new_voice_channel)
+                if (
+                    new_text_channel
+                    and new_text_channel.permissions_for(
+                        new_text_channel.guild.me
+                    ).manage_channels
+                ):
+                    await new_text_channel.delete(
+                        reason="AutoRoom: Associated voice channel deleted."
+                    )
 
     @staticmethod
     async def _process_autoroom_delete(voice_channel: discord.VoiceChannel):
