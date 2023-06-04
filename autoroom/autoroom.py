@@ -448,9 +448,8 @@ class AutoRoom(
             await member.move_to(
                     new_voice_channel, reason="AutoRoom: Move user to new AutoRoom."
             )
-        except (discord.Forbidden, discord.NotFound, discord.HTTPException):
+        except discord.errors.HTTPException:
             await self._process_autoroom_delete(new_voice_channel)
-            await self._process_autoroom_text_perms(new_voice_channel)
             return
 
         # Create optional text channel
