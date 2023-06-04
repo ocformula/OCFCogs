@@ -444,9 +444,12 @@ class AutoRoom(
         )
         if autoroom_source_config["room_type"] != "server":
             await self.config.channel(new_voice_channel).owner.set(member.id)
-        await member.move_to(
-            new_voice_channel, reason="AutoRoom: Move user to new AutoRoom."
-        )
+        try:
+            await member.move_to(
+                    new_voice_channel, reason="AutoRoom: Move user to new AutoRoom."
+            )
+        except (discord.Forbidden, discord.NotFound, discord.HTTPException):
+            await self._process_autoroom_delete(new_voice_channel):
 
         # Create optional text channel
         if autoroom_source_config["text_channel"]:
