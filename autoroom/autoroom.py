@@ -451,7 +451,6 @@ class AutoRoom(
         except discord.errors.HTTPException:
             await self._process_autoroom_delete(new_voice_channel)
             await self.config.channel(new_voice_channel).clear()
-            return
 
         # Create optional text channel
         if autoroom_source_config["text_channel"]:
